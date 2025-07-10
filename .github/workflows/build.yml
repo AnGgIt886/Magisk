@@ -32,8 +32,8 @@ jobs:
       - name: Build release
         run: ./build.py -vr all
 
-      - name: Build debug
-        run: ./build.py -v all
+      # - name: Build debug
+        # run: ./build.py -v all
 
       - name: Stop gradle daemon
         run: ./app/gradlew --stop
@@ -45,7 +45,7 @@ jobs:
           path: out
           compression-level: 9
 
-      - name: Upload mapping and native debug symbols
+      - name: Upload mapping and native symbols
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.sha }}-symbols
