@@ -13,7 +13,7 @@ struct Applet {
 };
 
 constexpr Applet applets[] = {
-    { "suu", su_client_main },
+    { "su", su_client_main },
     { "resetprop", resetprop_main },
 };
 
