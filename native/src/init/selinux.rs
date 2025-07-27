@@ -86,7 +86,7 @@ impl MagiskInit {
     }
 
     fn handle_sepolicy_impl(&mut self) -> LoggedResult<()> {
-        cstr!(SELINUXMOCK).mkdir(0o711)?;
+        cstr!(SELINUXMOCK).mkdir(0o755)?;
 
         let mut rules = String::new();
         let mut policy_ver = cstr!("/selinux_version");
