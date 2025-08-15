@@ -92,10 +92,6 @@ void exec_task(std::function<void()> &&task);
 // Daemon handlers
 void denylist_handler(int client, const sock_cred *cred);
 
-// Module stuffs
-void disable_modules();
-void remove_modules();
-
 // Scripting
 void install_apk(rust::Utf8CStr apk);
 void uninstall_pkg(rust::Utf8CStr pkg);
@@ -116,12 +112,10 @@ void update_deny_flags(int uid, rust::Str process, uint32_t &flags);
 
 // MagiskSU
 void exec_root_shell(int client, int pid, SuRequest &req, MntNsMode mode);
-void app_log(const SuAppRequest &info, SuPolicy policy, bool notify);
-void app_notify(const SuAppRequest &info, SuPolicy policy);
-int app_request(const SuAppRequest &info);
 
 // Rust bindings
 static inline rust::Utf8CStr get_magisk_tmp_rs() { return get_magisk_tmp(); }
 static inline rust::String resolve_preinit_dir_rs(rust::Utf8CStr base_dir) {
     return resolve_preinit_dir(base_dir.c_str());
 }
+static inline void exec_script_rs(rust::Utf8CStr script) { exec_script(script.data()); }

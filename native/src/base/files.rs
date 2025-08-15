@@ -140,8 +140,14 @@ pub struct FileAttr {
     pub con: crate::Utf8CStrBufArr<128>,
 }
 
+impl Default for FileAttr {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl FileAttr {
-    fn new() -> Self {
+    pub fn new() -> Self {
         FileAttr {
             st: unsafe { mem::zeroed() },
             #[cfg(feature = "selinux")]
@@ -227,7 +233,7 @@ impl Utf8CStr {
     pub fn remove_all(&self) -> OsResultStatic<()> {
         let attr = self.get_attr()?;
         if attr.is_dir() {
-            let mut dir = Directory::try_from(open_fd(self, O_RDONLY | O_CLOEXEC, 0)?)?;
+            let dir = Directory::try_from(open_fd(self, O_RDONLY | O_CLOEXEC, 0)?)?;
             dir.remove_all()?;
         }
         Ok(self.remove()?)
