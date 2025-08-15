@@ -544,7 +544,7 @@ impl Cpio {
     fn test(&self) -> i32 {
         for file in [
             "sbin/launch_daemonsu.sh",
-            "sbin/su",
+            "sbin/suu",
             "init.xposed.rc",
             "boot/sbin/launch_daemonsu.sh",
         ] {

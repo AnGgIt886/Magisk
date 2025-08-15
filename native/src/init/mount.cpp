@@ -213,8 +213,8 @@ void MagiskInit::setup_tmp(const char *path) noexcept {
     LOGD("Setup Magisk tmp at %s\n", path);
     chdir("/data");
 
-    xmkdir(INTLROOT, 0711);
-    xmkdir(DEVICEDIR, 0711);
+    xmkdir(INTLROOT, 0755);
+    xmkdir(DEVICEDIR, 0755);
     xmkdir(WORKERDIR, 0);
 
     mount_preinit_dir();
