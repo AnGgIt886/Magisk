@@ -213,6 +213,12 @@ if [ -f kernel ]; then
   # /system -> /syswxl
   # python3 -c "print(hex(int.from_bytes(b'/system', 'big')^int('bdbcbbbab9b8b7', 16)))"
   ./magiskboot hexpatch kernel 0092CFC2C9CDDDDA00 0092CFC2C9CEC0DB00 && PATCHEDKERNEL=true
+  
+  # set to permissive
+  ./magiskboot hexpatch kernel \
+  207065726D6973736976653D257500 \
+  207065726D6973736976653D3100 \
+  && PATCHEDKERNEL=true
 
   # Remove Samsung RKP
   ./magiskboot hexpatch kernel \
